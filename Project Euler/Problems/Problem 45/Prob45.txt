@@ -1,0 +1,20 @@
+#include "BigInt.h"
+#include "GeometricNumbers.h"
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main () 
+{
+	
+	for(double i = 1000; ; i++)
+	{
+		double pent = 0.5*(3*i*i - i);// Generate pentagonal number
+		if(isHexagonal(pent))//Check if is also hexagonal
+		{
+			cout << (int)pent;
+			break;
+		}
+	}
+	system("pause");
+}

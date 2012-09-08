@@ -1,0 +1,86 @@
+#include <iostream>
+#include "BigInt.h"
+using namespace std;
+
+int main()
+{
+	
+	BigInt B = 123456789;
+	int arr[10000] = {0};
+	for(int i = 0; i < 300000; i++)
+	{
+		
+		BigInt b12 = "00";
+		b12[0] = B[0];
+		b12[1] = B[1];
+
+		BigInt b345 = "000";
+		b345[0] = B[2];
+		b345[1] = B[3];
+		b345[2] = B[4];
+
+		BigInt b6789 = "0000";
+		b6789[0] = B[5];
+		b6789[1] = B[6];
+		b6789[2] = B[7];
+		b6789[3] = B[8];
+
+		int product23 = (b12*b345).bToi();
+	
+		
+		if(product23 == b6789.bToi())
+		{
+			arr[product23] = product23;
+			b12.print();
+			b345.print();
+		} 
+	
+
+		BigInt a1 = "0";
+		a1[0] = B[0];
+		
+
+		BigInt a2345 = "0000";
+		a2345[0] = B[1];
+		a2345[1] = B[2];
+		a2345[2] = B[3];
+		a2345[3] = B[4];
+
+		BigInt a6789 = "0000";
+		a6789[0] = B[5];
+		a6789[1] = B[6];
+		a6789[2] = B[7];
+		a6789[3] = B[8];
+
+		int product14 = (a1*a2345).bToi();
+
+		if(product14 == a6789.bToi())
+		{
+			arr[product14] = product14;
+			a1.print();
+			a2345.print();
+		} 
+					
+		B.nextPermutation();
+				
+	}
+	
+	
+	int answ = 0;
+
+	for(int i = 0; i < 10000; i++)
+		answ = answ + arr[i];
+
+	cout << "The pandigital products are:" << endl << endl;
+	for(int i = 0; i< 10000; i++)
+		if(arr[i] != 0)
+			cout << arr[i] << endl;
+
+
+	cout << endl << "The sum of these is: " << answ;
+	
+	system("pause");
+
+}
+
+

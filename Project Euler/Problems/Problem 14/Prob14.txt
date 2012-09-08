@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+int k = 0;
+int j = 0;
+int max = 0;
+int n = 1;
+long long int C = 27;
+
+for(int i = 2; i < 1000001; i++)
+{
+	C = i;
+	n = 1;
+	while(C != 1)
+	{
+		if(C % 2 == 0)
+			C = C/2;
+		else 
+			C = 3*C + 1;
+		n++;
+	}
+	if(max < n)
+	{
+		max = n;
+		j = i;
+	}
+}
+
+cout << j << endl << C;
+cin >> n;
+}
+

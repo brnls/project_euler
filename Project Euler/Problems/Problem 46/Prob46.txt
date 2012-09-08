@@ -1,0 +1,47 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	int answ = 0;
+	int* primes = PrimeCheck(1000000); //(int *)malloc(sizeof(int)*1000000);
+	//primes = 
+	int* OddComposites = (int *)malloc(sizeof(int)*1000000);
+	int bin = 1;
+	for(int i = 0; i < 1000000; i ++)
+	{
+		bin = bin * (-1); // term to remove every other number, in this case removing all even numbers.
+		if(primes[i] == 0 && bin == 1)
+			*(OddComposites + i) = i;
+		else
+			OddComposites[i] = 0;
+	}
+	
+	bool NotDone = true;
+	for(int i = 10; NotDone && i < 1000000 ; i++)
+	{
+			if(OddComposites[i] !=0)
+			{
+				for(int j = 1; j < 100; j++)
+				{
+					OddComposites[i] = OddComposites[i] - 2*(j*j);
+					if(OddComposites[i] >= 0 && primes[OddComposites[i]] !=0)
+						break;
+					else if(OddComposites[i] < 0)
+					{
+						NotDone = false;
+						answ = OddComposites[i] + 2*(j*j);
+						break;
+					}
+					else
+					{
+						OddComposites[i] = OddComposites[i] + 2*(j*j);
+						continue;
+					}
+				}
+			}
+	}
+	cout << answ;
+	cin >> answ;
+	
+}			

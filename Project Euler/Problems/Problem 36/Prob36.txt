@@ -1,0 +1,65 @@
+#include <iostream>
+#include "BigInt.h"
+using namespace std;
+
+
+
+int main()
+{
+	int twos[20] = {0}; // Array of all powers of two up to 2^19. Used for decimal to binary conversion.
+	twos[0] = 1;
+	twos[1] = 2;
+	for(int i = 2; i < 20; i++)
+	{
+		int product = 1;
+		int j = i;
+		while(j > 0)
+		{
+			product = product*2;
+				j--;
+		}
+		twos[i] = product;
+	}
+	
+	int answ = 0;
+
+
+	for(int k = 1; k < 1000000; k = k + 2)
+	{
+		
+		BigInt i = k;
+		if(i.isPalindrome())
+		{
+			BigInt iBin = "";// Convert to binary representation, then check if it is a Palindrome
+			int j = 19;
+			while(i.bToi() < twos[j])
+				j--;
+			while(j > -1)
+			{
+				if(i.bToi() >= twos[j])
+				{
+					iBin.insert(1,0);
+					i = i - twos[j];
+			
+				}
+				else
+				{
+			
+					iBin.insert(0,0);
+				}
+				j--;
+				
+			}
+			if(iBin.isPalindrome())
+				{
+					cout << k << endl;
+					answ = answ + k;
+				}
+		}
+	}
+
+	cout << answ;	
+	
+	system("pause");
+}
+

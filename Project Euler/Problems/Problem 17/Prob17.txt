@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	
+	int sum = 0;
+
+	// Letters of of one, two, three, four, ... nine in ones place
+
+	sum = sum + 9*10*(3 + 3 + 5 + 4 + 4 + 3 + 5 + 5 + 4);
+
+	// Letters of ten, twenty, ... ninety
+
+	sum = sum + 10*3 + 100*(6 + 6 + 5 + 5 + 5 + 7 + 6 + 6);
+
+	// Number of hundreds
+
+	sum = sum + 900*7;
+
+	// Letters of one, two, three, ..., nine in hundreds place
+
+	sum = sum + 100*(3 + 3 + 5 + 4 + 4 + 3 + 5 + 5 + 4);
+
+	// Letters of eleven, twelve...
+
+	sum = sum + 10*(6 + 6 + 8 + 8 + 7 + 7 + 9 + 8 + 8);
+
+	// Letters of and
+
+	sum = sum + (900 - 9)*3;
+
+	// Letters of one thousand
+	
+	sum = sum + 11;
+
+	cout << sum;
+	cin >> sum;
+
+
+
+}

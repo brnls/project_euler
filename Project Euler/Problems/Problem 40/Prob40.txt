@@ -1,0 +1,42 @@
+#include <iostream>
+#include "BigInt.h"
+#include <vector>
+using namespace std;
+
+
+
+
+int main()
+{
+	int answ = 1;
+	int decCountTotal = 1;
+	BigInt B;
+
+		for(int i = 1; decCountTotal < 1000000; i++)
+	{
+		B = i;
+		int decCountNum = 0;
+		while(decCountNum < B.size())
+		{
+			if(decCountTotal == 10)
+				answ = answ * B[B.size() - decCountNum - 1];
+			if(decCountTotal == 100)
+				answ = answ * B[B.size() - decCountNum - 1];
+			if(decCountTotal == 1000)
+				answ = answ * B[B.size() - decCountNum - 1];
+			if(decCountTotal == 10000)
+				answ = answ * B[B.size() - decCountNum - 1];
+			if(decCountTotal == 100000)
+				answ = answ * B[B.size() - decCountNum - 1];
+			if(decCountTotal == 1000000)
+				answ = answ * B[B.size() - decCountNum - 1];
+			decCountNum++;
+			decCountTotal++;
+
+		}
+	}
+	
+	cout << answ;
+	cin >> answ;
+}
+

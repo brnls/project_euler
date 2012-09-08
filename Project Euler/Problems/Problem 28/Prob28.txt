@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main()
+
+{
+	bool done = false;
+	int sum = 1;
+	int count = 1; 
+	for(int j = 1; j < 501; j++)
+		for(int i = 0; i < 4; i++)
+		{
+			count = count + 2*j;
+			sum = sum + count;
+		}
+
+		cout << sum;
+		cin >> sum;
+}

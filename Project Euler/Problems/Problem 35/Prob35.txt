@@ -1,0 +1,34 @@
+#include <iostream>
+#include "BigInt.h"
+#include <vector>
+using namespace std;
+
+int main()
+{
+	
+int* primes = PrimeList(200000);
+int* primex = PrimeCheck(1000000);
+int count = 0;
+BigInt B;
+for(int i = 0; primes[i] < 1000000; i++)
+{
+	B = primes[i];
+	int permuteCount = 1;;
+	while(permuteCount < B.size())
+	{
+		B.permuteBackward();
+		if(B.bToi() != primex[B.bToi()])
+			break;
+		B.print();
+		permuteCount++;		
+	}
+
+	if(permuteCount == B.size())
+		count++;
+}
+
+cout << count;
+cin >> count;
+
+
+}

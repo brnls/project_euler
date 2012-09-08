@@ -1,0 +1,12 @@
+ int x = 4;
+
+ int* px = &x;
+
+ cout << "Address of x: " << &x << '\n';
+ cout << "Value of x: " << x << '\n';
+
+ cout << "Value of px: " << px << '\n';
+ cout << "Address of px: " << &px << '\n';
+ cout << "What px is pointing to: " << *px << '\n';
+
+ cin >> x;

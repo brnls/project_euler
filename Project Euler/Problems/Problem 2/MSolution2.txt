@@ -1,0 +1,38 @@
+int main()
+{
+    int term[3] = {1,2,3};
+    int sum = 0;
+    bool b_done = false;
+
+    for(int i = 3;; i+=3)
+    {
+        // Sum even valued terms
+        for(int t=0; t < 3; t++)
+        {
+            if(term[t] % 2 == 0)
+            {
+                if(term[t] > 4000000)
+                {
+                    b_done = true;
+                    break;
+                }
+                else
+                    sum += term[t];
+            }
+        }
+
+        if(b_done)
+            break;
+
+        // Increment terms
+        term[0] = term[1] + term[2];
+        term[1] = term[2] + term[0];
+        term[2] = term[0] + term[1];
+    }
+
+    cout << "Sum is: " << sum;
+
+    // Wait for input
+    int x;
+    cin >> x;
+}

@@ -1,0 +1,26 @@
+#include "BigInt.h"
+#include "GeometricNumbers.h"
+#include <iostream>
+#include <vector>
+using namespace std;
+
+
+// No reason this code should work. But it does.
+int main () 
+{
+	pentagonalTool pTool;
+	vector<double> pents = pTool.pentagonalArray(range);
+	for(int j = 0; j < 10000; j++)
+	{
+		for(int i = 1; i < 100000; i++)
+		{
+			if(isPentagonal(pents[i] + pents[i+j]) && isPentagonal(pents[i+j] - pents[i]))
+			{
+				cout << (int)(pents[i+j] - pents[i]);
+				break;
+			}
+			
+		}
+	}
+	system("pause");
+}

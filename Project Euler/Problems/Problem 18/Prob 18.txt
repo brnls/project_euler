@@ -1,0 +1,160 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	//triangle array
+	int tri[15][15];
+	
+	//counter to assign tri to trilinear
+	int q = 0;
+
+	
+	
+		
+	//linear triangle array
+	int trilinear[120]  = {75, 
+							95, 64,
+							17, 47, 82,
+							18, 35, 87, 10,
+							20, 4, 82, 47, 65,
+							19, 1, 23, 75, 3, 34,
+							88, 2, 77, 73, 7, 63, 67,
+							99, 65, 4, 28, 6, 16, 70, 92,
+							41, 41, 26, 56, 83, 40, 80, 70, 33,
+							41, 48, 72, 33, 47, 32, 37, 16, 94, 29,
+							53, 71, 44, 65, 25, 43, 91, 52, 97, 51, 14,
+							70, 11, 33, 28, 77, 73, 17, 78, 39, 68, 17, 57,
+							91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48,
+							63, 66, 04, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31,
+							04, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23};
+
+		for(int n = 0; n < 15; n++)
+		{
+			for(int i = 0; i < n+1; i++)
+			{
+				tri[n-i][i] = trilinear[q];
+				q++;
+			}
+		}
+
+	cout << tri[14][0];
+	cin >> q;
+
+	//Inputting paths
+
+	//Unique paths in triangle defined as binary choice tree (0 = down to right, 1 = down to left);
+	int p = 0;
+	int max = 0;
+	int path[14]; 
+	memset(path, 0, sizeof(path));
+	while(p < 16383)
+	{
+		path[13]++;
+		
+		for(int i = 13; i >= 0; i--)
+		{
+			if(path[i] == 2)
+			{
+				path[i] = 0;
+				path[i-1]++;
+		
+			}
+		}
+		
+		p++;
+		int sum = 75;
+		int right = 0;
+		int left = 0;
+		for(int k = 0; k < 14; k++)
+		{
+			if(path[k] == 1)
+				left++;
+			else
+				right++;	
+			sum = sum + tri[left][right];
+		}
+
+		if(sum > max)
+			max = sum;
+
+	}
+	
+
+	 
+	cout << max;
+	cin >> max;
+
+}
+
+
+1 == (1 << 0)
+2 == (1 << 1)
+4 == (1 << 2)
+
+1 & 0x0001 == true
+1 & 0x0010 == false
+
+1 & 1 == 1
+1 & 0 == 0
+0 & 0 == 0
+0 & 1 == 0
+
+1 | 0 == 1
+
+0x01 | 0x10 => 0x11
+0x1100 | 0x0001 => 0x1101
+
+
+
+
+enum Days
+{
+	Sunday
+	Monday,
+	Tuesday,
+	Wednesday,
+	Thursday,
+	Friday,
+	Saturday,
+	last_Days
+};
+
+
+
+
+Days day = Sunday;
+day = Monday;
+
+for(int i = 0; i < (int)last_Days; i++)
+{
+	if(day == (Days)i)
+	{
+		// found 
+	}
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

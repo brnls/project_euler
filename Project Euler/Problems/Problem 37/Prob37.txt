@@ -1,0 +1,50 @@
+#include <iostream>
+#include "BigInt.h"
+#include <vector>
+using namespace std;
+
+
+
+bool truncatable(int& a, int* primex)
+{
+	BigInt B = a;
+	while(B.size() > 0)
+	{
+		B.truncateRight();
+		if(primex[B.bToi()] != B.bToi())
+			return false;
+	}
+	B = a;
+	while(B.size() > 0)
+	{
+		B.truncateLeft();
+		if(primex[B.bToi()] != B.bToi())
+			return false;
+	}
+	return true;
+}
+
+
+int main()
+{	
+	int* primex = PrimeCheck(100000);
+	int* primes = PrimeList(100000);
+	int total = 0;
+	int count = 0;
+
+	
+	for(int i = 1; count < 14; i++)
+	{
+		if(truncatable(primes[i], primex))
+		{
+			cout << primes[i] << endl;
+			total = total + primes[i];
+			count++;
+		}
+	}
+	
+	cout << total -3-5-7;
+
+
+	system("pause");
+}

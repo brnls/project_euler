@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int b = 0;
+	char* swap = 0;
+	char* c[5163] = 
+	{
+		"
+	};
+	bool done = true;
+	while(b<5163)
+	{
+		for(int j = 0; j < (5162-b); j++)
+		{
+			for(int i = 0; c[j][i] != 0; i++)
+			{
+				if(c[j][i] > c[j+1][i])
+				{
+					swap = c[j];
+					c[j] = c[j+1];
+					c[j+1] = swap;
+					break;
+				}	
+				
+				else if(c[j][i] == c[j+1][i]);
+				else
+					break;
+					
+			}
+		}
+		b++;
+	}

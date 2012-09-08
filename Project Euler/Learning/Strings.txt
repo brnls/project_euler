@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+#include "String.h"
+
+class String
+{
+public:
+ void setString(char* pstr)
+ {
+  strcpy(chars, pstr);
+ }
+
+ void printString()
+ {
+  cout << chars;
+ }
+
+private:
+ char chars[32];
+};
+
+int main()
+{
+ ProbTimer timer;
+
+ String str;
+ String str2;
+ str.setString("brnls\n");
+ str.printString();
+}

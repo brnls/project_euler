@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int sum = 0;
+	
+	for(int i = 0; i < 333; i = i + 1)
+	{
+		sum += (i + 1)*3;
+	}
+
+	for(int i = 0; i < 199; i = i + 1)
+	{
+		sum += (i + 1)*5;
+	}
+
+		for(int i = 0; i < 1000/15; i = i + 1)
+	{
+		sum -= (i + 1)*15;
+	}
+
+	cout << "THE ANSWER IS...." << sum;
+	cin >> sum;
+}
+
+void Prob2()
+{
+	
+}
+
+int main()
+{
+	//Prob1();
+	Prob2();
+}
+// Find the sum of all the multiples of 3 or 5 below 1000

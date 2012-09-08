@@ -1,0 +1,42 @@
+// print the content of a text file.
+#include "BigInt.h"
+#include "primeClass.h"
+#include <iostream>
+using namespace std;
+
+
+
+
+int main () 
+{
+	primeTool primes;
+	int num = 100;
+	int count = 0;
+	int countFactors;
+	for(int i = 0; i < 1000000; i++)
+	{
+		if(primes.uniquePrimeFactors(i) == 4)
+		{
+			if(primes.uniquePrimeFactors(i+1) == 4)
+			{
+				if(primes.uniquePrimeFactors(i+2) == 4)
+				{
+					if(primes.uniquePrimeFactors(i+3) == 4)
+					{
+						cout << i;
+						break;
+					}
+					else i = i + 3;
+				}
+				else
+					i = i + 2;
+			}
+			else
+				i++;
+		}	
+	}
+	
+	system("pause");
+	
+
+}

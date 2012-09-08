@@ -1,0 +1,43 @@
+#include <iostream>
+#include "BigInt.h"
+using namespace std;
+
+int main()
+{
+	int answ = 0;
+	int facts[10] = {0};
+
+	for(int i = 0; i < 10; i++)
+	{
+		int product = 1;
+		int j = i;
+		while(j > 1)
+		{
+			product = product * j;
+			j--;
+		}
+		facts[i] = product;
+	}
+
+	for(int i = 0; i < 10; i++)
+	{
+		cout << facts[i] << endl;
+	}
+
+	for(int i = 10; i < 2500000; i++)
+	{
+		BigInt B = i;
+		int sum = 0;
+		for(int i = 0; i < B.size(); i++)
+			sum = sum + facts[B[i]];
+		if(sum==i)
+			answ = answ + i;
+	}
+	cout << answ;
+
+
+	system("pause");
+
+}
+
+

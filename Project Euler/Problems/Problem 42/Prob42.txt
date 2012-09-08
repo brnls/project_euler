@@ -1,0 +1,41 @@
+// print the content of a text file.
+#include <iostream>
+#include <fstream>
+#include <string>
+#include<vector>
+#include "BigInt.h"
+using namespace std;
+
+
+int main () {
+
+  ifstream infile;
+
+  infile.open ("C:\\Users\\Brian\\Desktop\\Programming\\Project Euler\\Problems\\Problems 1-50\\Problem 42\\words.txt");
+  int answ = 0;
+  int* triangle = TriangleNumbers(2000);
+  char s[40] = {'0'};
+  vector<char> word;
+  
+  while (infile.good())
+  {
+	  for(int i = 0; i < 40; i++)
+		  s[i] = '0';
+	  word.clear();
+     infile.getline(s,40,',');
+	 for(int i = 0; s[i+1] != '0'; i++)//
+		 word.push_back(s[i]);
+	 int sum = 0;
+	 for(int i = 0; i < word.size(); i++)
+	 {
+		 if(word[i] == '"');
+		 else
+		 sum = sum + word[i] - 64; //subtract ascii value of letters (A=65)
+	 }
+	 if(triangle[sum] == 1)
+		 answ++;
+  }
+  infile.close();
+  cout << answ;
+  cin >> answ;
+}

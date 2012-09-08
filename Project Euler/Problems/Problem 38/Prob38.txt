@@ -1,0 +1,34 @@
+#include <iostream>
+#include "BigInt.h"
+using namespace std;
+
+
+
+int main()
+{
+	// Given that 918273645 is one possible answer. We only need to check concatentations with 9 in first position
+	// It can be seen that for 2 digits it is impossible (91, 92, 93, 94 ...) 
+	// 3 digits Gives an inappropriate number of final digits. 9XX * 1  = 3 digits, 9XX *2 = 4 digits, 9XX *3 = 4 digits. Sums to 11 digits total
+	// Thus if there is a higher answer than 918273645, it must be 9XXX *1 and 9XXX*2 concatenated
+	// Check 100 through 999 with 9XXX (with obvious extra work involved) for the correct answer)
+	for(int i = 100; i< 889; i++)
+	{
+		BigInt n = i;
+		n.insert(9,n.size());
+		
+		BigInt m = n * 2; 
+		
+		BigInt combo = "";
+		for(int j = 0; j < 5; j++)
+			combo.insert(m[j],combo.size());
+
+		for(int j = 0; j < 4; j++)
+			combo.insert(n[j], combo.size());
+
+		if(combo.isPandigitalNine())
+			combo.print();
+	}
+
+	system("pause");
+}
+

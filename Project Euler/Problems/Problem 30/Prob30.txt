@@ -1,0 +1,29 @@
+#include <iostream>
+#include "BigInt.h"
+using namespace std;
+
+int main()
+
+{
+	BigInt sum = 0;
+	BigInt x = "1634";
+	BigInt answ = 0;
+	int y = 0;
+
+	for(int j = 2; j < 1000000; j++)
+	{
+		x = j;
+		sum = 0;
+		for(int i = 0; i < x.size(); i++)
+		{
+			sum = sum + x[i]*x[i]*x[i]*x[i]*x[i];
+		}
+		if(x == sum)
+			answ = answ + x;
+	}
+	answ.print();
+	system("pause");
+
+
+
+}

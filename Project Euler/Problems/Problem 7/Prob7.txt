@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int count = 0;
+	int num = 0;
+	int i=2;
+	//2,3,5,7,11,13,17,19
+	while(count < 10001)
+	{
+		bool prime = true;
+		for(int j = 2; j < (i/2 +1); j++)
+		{	
+			if(i % j == 0)
+			{	
+				prime = false;
+				break;
+			}
+			
+			
+		
+		}
+		if(prime)
+		{
+			count++;
+			num = i;
+		}
+
+	i++;
+	}
+	
+	cout << num << "is the " << count << "prime";
+	cin >> i;
+}
+
+//1, 2, 3, 5, 7, 11, 13, 15

@@ -1,0 +1,66 @@
+// print the content of a text file.
+#include "BigInt.h"
+#include <iostream>
+using namespace std;
+
+
+int main () {
+	
+
+	int* primeChecker = PrimeCheck(10000);
+
+	int* primes = PrimeList(4000);
+	int last = 0;
+	int first = 0;
+	int i = 0;
+	while(first < 1000)// Get upper bound of 4 digit primes
+	{
+		first = primes[i];
+		i++;
+	}
+	
+	int firstIndex = i-1;
+
+	while(last < 9999)// Get lower bound of 4 digit primes
+	{
+		last = primes[i];
+		i++;
+	}
+	int lastIndex = i-1 ;
+	//last = i - 1;
+
+
+	BigInt x = 0;
+
+	for(i = firstIndex; i < lastIndex; i++)
+	{
+		x = primes[i];
+		BigInt xperm = x;
+		xperm.nextPermutation();
+		BigInt temp;
+		vector<BigInt> sequence;
+		while(!(temp==xperm))
+		{
+			if(primeChecker[xperm.bToi()] != 0)
+			{
+				sequence.push_back(xperm);
+			}
+			temp = xperm; // to check when highest permutation has been achieved
+			xperm.nextPermutation();
+			
+		}
+
+		BigInt diff = 0;
+		if(sequence.size() > 2)
+		{
+			diff = sequence[1] - sequence[0];
+			if(sequence[1] + diff == sequence[2])
+			{
+				sequence[0].print();
+				sequence[1].print();
+				sequence[2].print();
+			}
+		}
+	}
+	cin >> last;
+}

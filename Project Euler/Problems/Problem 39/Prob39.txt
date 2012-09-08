@@ -1,0 +1,49 @@
+#include<iostream>
+#include<math.h>
+#include "BigInt.h"
+using namespace std;
+
+//With the pythagorean triple generating formula: For m>n, a = m^2 - n^2, b = 2mn, c = m^2 + n^2
+// we can generate all of the triples if we also multiply a, b, and c by a constant k.
+// This iterates through all possibilities of m,n, and k, while the perimeter is less than 1000 and checking for the most
+// occurring perimeter
+int main()
+{
+	BigInt B = "354";
+	B = B + 5634;
+	int perimeterArr[1000] = {0};
+	
+	int perimeter = 0;
+	for(int m = 2; m < 50; m++)
+	{
+		for(int n = 1; n < m; n++)
+		{
+			for(int k = 1; perimeter < 1000; k++)
+			{
+				int a = (m*m - n*n);
+				int b = 2*m*n;
+				int c = m*m + n*n;
+				perimeter = k*(a + b + c);
+				if(perimeter < 1000)
+				{
+					perimeterArr[perimeter]++;
+				}
+			}
+			perimeter = 0;
+		}
+	}
+	int MaxPerimeterOccurrence = 0;
+	int MaxPerimeter = 0;
+	for(int i = 0; i < 1000; i++)
+	{
+		if(MaxPerimeterOccurrence < perimeterArr[i])
+		{
+			MaxPerimeterOccurrence = perimeterArr[i];
+			MaxPerimeter = perimeterArr[i];
+			MaxPerimeter = i;
+		}
+	}
+	cout << "The maximum perimeter is" << MaxPerimeter;
+}			
+
+

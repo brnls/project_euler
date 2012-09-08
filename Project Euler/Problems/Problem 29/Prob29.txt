@@ -1,0 +1,42 @@
+#include <iostream>
+#include "BigInt.h"
+#include <vector>
+using namespace std;
+
+
+int main()
+{	
+
+
+	vector<BigInt> x(9801,1);
+	
+	int t = 101;
+	int tp= 9801;
+	int count = 0;
+	for(int i = 2; i < t; i++)
+	{
+		for(int j = 2; j < t; j++)
+		{
+			x[count] = (BigInt)i^j;
+			count++;
+		}
+		
+	}
+	int dup[9801] = {0};
+	int total = 0;
+	for(int i = 0; i < tp; i++)
+		for(int j = i+1; j < tp; j++)
+		{
+			if(x[i] == x[j] && dup[j]==0)
+			{
+				total++;
+				dup[j] = 1;
+			}
+		}
+	
+
+	cout << 9801- total << endl << count;
+	
+
+	system("pause");
+}

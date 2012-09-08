@@ -1,0 +1,52 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	int Sundays = 0;
+	int counter = 0;
+	int day = 0;
+	int month = 0;
+	int year = 1901;
+	int dayinmonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+	// Years 1900-1904 Jan 1st
+			
+	while(year < 2001)
+	{
+		//Leap years
+		if(year % 4 == 0)
+		{
+			dayinmonth[1] = 29;
+		}			
+		else
+			dayinmonth[1] = 28;
+
+		//Sept 26 1991
+
+		month = 0;
+		while(month < 12)
+		{
+			day = 0;
+			while(day < dayinmonth[month])
+			{
+				
+				if(day == 0 && counter % 7 == 5)
+				{
+					Sundays++;
+					cout << day << endl << month << endl << year << endl;
+				}
+				
+				
+				counter++;
+				day++;
+								
+			}
+			month++;
+		}
+		year++;
+	}
+		
+	cout << Sundays;
+	cin >> counter;
+	// Years 1904-1999

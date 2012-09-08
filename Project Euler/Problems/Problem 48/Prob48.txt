@@ -1,0 +1,29 @@
+#include <iostream>
+#include "BigInt.h"
+#include <vector>
+using namespace std;
+
+int main()
+{
+BigInt B = "1";
+BigInt sum = 0;
+
+
+for(int j = 1; j < 1001; j++)
+{
+	B = j;
+	for(int i = 1; i <j; i++)
+	{
+		BigInt d = j;
+		B = B * d;
+		while(B.size() > 10)
+			B.truncateLeft();
+	}
+	sum = sum + B;
+	while(sum.size() > 10)
+		sum.truncateLeft();
+}
+sum.print();
+
+system("pause");
+}

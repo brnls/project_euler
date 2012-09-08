@@ -1,0 +1,30 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+	
+	int q = 0;
+	int p = 0;
+	int path[14] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	while(p < 16383)
+	{
+		path[13]++;
+		
+		for(int i = 14; i > -1; i--)
+		{
+			if(path[i] == 2)
+			{
+				path[i] = 0;
+				path[i-1]++;
+			
+			}
+			
+		}
+		p++;
+	}
+	
+	for(int i = 0; i < 14; i++)
+	cout << path[i];
+	cin >> path[0];
+}

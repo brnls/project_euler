@@ -1,0 +1,71 @@
+// print the content of a text file.
+#include "BigInt.h"
+#include <iostream>
+using namespace std;
+
+
+
+
+int main () {
+
+	BigInt x = "1023456789"; // This number will be permuted through all possible permutations
+	BigInt temp; // Used to find when x has reached last permutation
+	// x[0] = d10, x[1] = d9, x[2] = d8, etc
+	// d10, d9, d8, d7, d6, d5, d4, d3, d2, d1
+	// 0,   1,  2,  3,  4,  5,  6,   7,  8,  9  
+	BigInt sum = 0;
+	while(!(x==temp))
+	{
+		temp = x;
+		if(x[6] % 2 == 1) // check for 4th digit divisibility by 2
+		{
+			x.nextPermutation();
+			continue;
+		}
+
+		if(!((x[7] + x[6] + x[5]) % 3 == 0)) // check for 5th digit divisibility by 3
+		{
+			x.nextPermutation();
+			continue;
+		}
+
+		if(!(x[4] == 5 || x[4] == 0)) // check for 6th digit divisibility by 5
+		{
+			x.nextPermutation();
+			continue;
+		}
+
+		if(!((x[5]*10 + x[4] - x[3]*2) % 7 == 0)) //check for d5d6d7 divisibility by 7
+		{
+			x.nextPermutation();
+			continue;
+		}
+
+		if(!((x[4] - x[3] + x[2]) % 11 == 0)) // check for d6d7d8 divisibility by 11
+		{
+			x.nextPermutation();
+			continue;
+		}
+		
+		if(!((x[1] + 10*x[2] + 100*x[3]) % 13 == 0)) // check for d7d8d9 divisibility by 13
+		{
+			x.nextPermutation();
+			continue;
+		}
+
+		if(!((x[0] + 10*x[1] + 100 * x[2]) % 17 == 0))// Check d8d9d10 for divisibility by 17. If 
+		{
+			x.nextPermutation();
+			continue;
+		}
+
+		// If all divisibility requirements are met, print sum of answers. 
+		
+		sum = sum + x;
+		x.nextPermutation();
+		
+	}
+
+	sum.print();
+	system("pause");
+}

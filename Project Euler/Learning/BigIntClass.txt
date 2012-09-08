@@ -1,0 +1,77 @@
+#include <iostream>
+#include <list>
+ 
+typedef char Digit;
+ 
+class BigInt
+{
+    public:
+      BigInt () { };
+      BigInt (unsigned int i);
+      BigInt (const char* i);
+      BigInt operator+ (const BigInt& big);
+      int size() const { return number.size(); }
+ 
+    private:
+      std::list<Digit> number;
+};
+ 
+BigInt::BigInt (unsigned int i)
+{
+    while (i) { number.push_front (i % 10); i/=10; }
+}
+ 
+BigInt::BigInt (const char* i)
+{
+    for(const char* it=i;*it != 0; it++)
+      number.push_back(*it-'0');
+}
+ 
+BigInt
+BigInt::operator+ (const BigInt& big)
+{
+    char carry = 0;
+    char tmp;
+    BigInt result;
+    std::list<Digit>::reverse_iterator it;
+    std::list<Digit>::const_reverse_iterator it2;
+    for (it = number.rbegin(), it2 = big.number.rbegin();
+         it != number.rend() || it2 != big.number.rend();
+         it != number.rend() ? it++ : it, it2 != big.number.rend() ? it2++ : it2)
+    {
+        tmp = (it != number.rend() ? *it:0) +
+              (it2 != big.number.rend() ? *it2:0) +
+              carry;
+        if (tmp > 9)
+        {
+            tmp = tmp - 10;
+            carry = 1;
+        }
+        else
+        {
+            carry = 0;
+        }
+        result.number.push_front(tmp);
+    }
+    if (carry) result.number.push_front(1);
+    return result;
+}
+ 
+int
+main()
+{
+    BigInt prev2 = 1;
+    BigInt prev1 = 1;
+    BigInt current = prev1 + prev2;
+    int term = 3;
+ 
+    while (current.size() != 1000)
+    {
+        term++;
+        prev2 = prev1;
+        prev1 = current;
+        current = prev1 + prev2;
+    }
+ 
+    std::cout << "Solution:" << term << std::endl;
+}
